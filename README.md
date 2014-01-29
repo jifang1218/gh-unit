@@ -39,7 +39,7 @@ In your Podfile:
 
 ```
 target :Tests do
-	pod 'GHUnit', '~> 0.5.8'
+	pod 'GHUnit', '~> 0.5.9'
 end
 ```
 
