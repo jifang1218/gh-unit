@@ -288,7 +288,13 @@ operationQueue=operationQueue_;
       if (resultsDirStr) {
         resultsDir = @(resultsDirStr);
       } else {
+          // for simulator, we redirect to /tmp/test-results on disk;
+          // for device, we leave it on /tmp/test-results on device.
+#if TARGET_IPHONE_SIMULATOR
+          NSString *tmpDir = @"/tmp";
+#else
         NSString *tmpDir = NSTemporaryDirectory();
+#endif
         resultsDir = [tmpDir stringByAppendingPathComponent:@"test-results"];
       }      
 
