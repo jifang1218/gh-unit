@@ -965,7 +965,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0041C60913BA7BEF0015FC22 /* iOSSimulator-Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_INCLUDING_64_BIT)",
+					armv7s,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -973,7 +979,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0041C60A13BA7BEF0015FC22 /* iOSSimulator-Release.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_INCLUDING_64_BIT)",
+					armv7s,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -981,9 +993,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0041C60713BA7BEF0015FC22 /* iOSDevice-Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_INCLUDING_64_BIT)",
+					armv7s,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_THUMB_SUPPORT = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
 			};
 			name = Debug;
 		};
@@ -991,9 +1008,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0041C60813BA7BEF0015FC22 /* iOSDevice-Release.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_INCLUDING_64_BIT)",
+					armv7s,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_THUMB_SUPPORT = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 			};
 			name = Release;
 		};

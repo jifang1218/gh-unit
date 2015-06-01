@@ -37,6 +37,8 @@
 
 @implementation GHUnitIOSAppDelegate
 
+@synthesize window = window_;
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	char *stderrRedirect = getenv("GHUNIT_STDERR_REDIRECT");
 	if (stderrRedirect) {
