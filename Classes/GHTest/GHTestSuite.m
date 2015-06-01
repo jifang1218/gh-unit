@@ -56,7 +56,11 @@ NSString *GHUnitTest = NULL;
   GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" testCases:nil delegate:nil];  
   for(id testCase in testCases) {
     // Ignore test cases that can't be run at the command line
-    if (!([testCase respondsToSelector:@selector(isCLIDisabled)] && [testCase isCLIDisabled] && getenv("GHUNIT_CLI"))) [allTests addTestCase:testCase];
+    if (!([testCase respondsToSelector:@selector(isCLIDisabled)] && [testCase isCLIDisabled]
+#ifndef EASEMOB_AUTOTEST
+          && getenv("GHUNIT_CLI")
+#endif
+          )) [allTests addTestCase:testCase];
   }
   return allTests;
 }

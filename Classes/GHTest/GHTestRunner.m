@@ -277,7 +277,9 @@ operationQueue=operationQueue_;
     GHTestSuite *testSuite = (GHTestSuite *)test_;
 
     // Log JUnit XML if environment variable is set
+#ifndef EASEMOB_AUTOTEST
     if (getenv("WRITE_JUNIT_XML")) {
+#endif
       NSError *error = nil;
 
       NSString *resultsDir;
@@ -297,7 +299,9 @@ operationQueue=operationQueue_;
       } else {
         [self log:@"Wrote JUnit XML successfully.\n"];
       }
+#ifndef EASEMOB_AUTOTEST
     }
+#endif
   }
 
   cancelling_ = NO;

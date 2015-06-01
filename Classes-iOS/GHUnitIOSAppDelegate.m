@@ -45,8 +45,11 @@
 		NSString *stderrRedirectPath = @(stderrRedirect);
 		freopen([stderrRedirectPath fileSystemRepresentation], "a", stderr);
 	}
-	
-  if (getenv("GHUNIT_CLI")) {
+
+#ifndef EASEMOB_AUTOTEST
+  if (getenv("GHUNIT_CLI"))
+#endif
+  {
     int exitStatus = [GHTestRunner run];
     if ([application respondsToSelector:@selector(_terminateWithStatus:)]) {
       [(id)application _terminateWithStatus:exitStatus];
@@ -65,7 +68,12 @@
   // Delete all interim saved images from previous UI tests
   [GHViewTestCase clearTestImages];
 
-  if (getenv("GHUNIT_AUTORUN")) [viewController runTests];
+#ifndef EASEMOB_AUTOTEST
+  if (getenv("GHUNIT_AUTORUN"))
+#endif
+  {
+      [viewController runTests];
+  }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

@@ -38,7 +38,11 @@
 + (NSString *)documentsDirectory {
   // When run from the command line, the documents directory is the User's documents directory,
   // so allow it to be overriden through an environment variable.
-  if (getenv("GHUNIT_CLI") && getenv("GHUNIT_DOCS_DIR")) {
+  if (
+#ifndef EASEMOB_AUTOTEST
+      getenv("GHUNIT_CLI") &&
+#endif
+      getenv("GHUNIT_DOCS_DIR")) {
     return @(getenv("GHUNIT_DOCS_DIR"));
   }
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

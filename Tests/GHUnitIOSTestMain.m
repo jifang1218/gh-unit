@@ -47,7 +47,12 @@ int main(int argc, char *argv[]) {
     int retVal;
     @autoreleasepool {
         
+#ifndef EASEMOB_AUTOTEST
         BOOL isCli = getenv("GHUNIT_CLI") ? YES : NO;
+#else
+        BOOL isCli = YES;
+#endif
+        
         CFMessagePortRef portRef = NULL;
         if (isCli == YES) {
             

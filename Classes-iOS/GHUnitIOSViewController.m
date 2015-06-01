@@ -283,7 +283,10 @@ NSString *const GHUnitFilterKey = @"Filter";
   // Save defaults after test run
   [self saveDefaults];
   
-  if (getenv("GHUNIT_AUTOEXIT")) {
+#ifndef EASEMOB_AUTOTEST
+  if (getenv("GHUNIT_AUTOEXIT"))
+#endif
+  {
     NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
     exit((int)runner.test.stats.failureCount);
   }
