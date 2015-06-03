@@ -29,6 +29,11 @@
 
 //! @cond DEV
 
+#if EASEMOB_AUTOTEST
+    #define kSimulatorPostfix @"-simulator"
+    #define kDevicePostfix @"-device"
+#endif
+
 #import "GHTestGroup+JUnitXML.h"
 
 
@@ -38,9 +43,9 @@
   if (self.stats.testCount > 0) {
 #if EASEMOB_AUTOTEST
     #if TARGET_IPHONE_SIMULATOR
-          NSString *filename = [[NSString alloc] initWithFormat:@"%@-simulator", self.name];
+          NSString *filename = [[NSString alloc] initWithFormat:@"%@-%@", self.name, kSimulatorPostfix];
     #else
-          NSString *filename = [[NSString alloc] initWithFormat:@"%@-device", self.name];
+          NSString *filename = [[NSString alloc] initWithFormat:@"%@-%@", self.name, kDevicePostfix];
     #endif // end of TARGET_IPHONE_SIMULATOR
     NSString *XMLPath = [path stringByAppendingPathComponent:
                          [NSString stringWithFormat:@"%@.xml", filename]];
