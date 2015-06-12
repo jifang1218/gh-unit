@@ -29,11 +29,6 @@
 
 //! @cond DEV
 
-#if EASEMOB_AUTOTEST
-    #define kSimulatorPostfix @"-simulator"
-    #define kDevicePostfix @"-device"
-#endif
-
 #import "GHTestGroup+JUnitXML.h"
 
 
@@ -41,19 +36,8 @@
 
 - (BOOL)writeJUnitXMLAtPath:(NSString *)path error:(NSError **)error {
   if (self.stats.testCount > 0) {
-#if EASEMOB_AUTOTEST
-    #if TARGET_IPHONE_SIMULATOR
-          NSString *filename = [[NSString alloc] initWithFormat:@"%@-%@", self.name, kSimulatorPostfix];
-    #else
-          NSString *filename = [[NSString alloc] initWithFormat:@"%@-%@", self.name, kDevicePostfix];
-    #endif // end of TARGET_IPHONE_SIMULATOR
-    NSString *XMLPath = [path stringByAppendingPathComponent:
-                         [NSString stringWithFormat:@"%@.xml", filename]];
-#else 
       NSString *XMLPath = [path stringByAppendingPathComponent:
                            [NSString stringWithFormat:@"%@.xml", self.name]];
-#endif // end of EASEMOB_AUTOTEST
-    
     // Attempt to write the XML and return the success status
     return [[self JUnitXML] writeToFile:XMLPath atomically:NO encoding:NSUTF8StringEncoding error:error];
   }
